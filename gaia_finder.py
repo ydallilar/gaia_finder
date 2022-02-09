@@ -40,12 +40,12 @@ def gaussian(p, x, y):
 
 def get_gaia(target, fov):
 
-    result = Vizier.query_region(target, fov=fov*u.arcsec, catalog="I/350/gaiaedr3", column_filters={'Gmag': '<%.f' % MAGLIM})
+    result = Vizier.query_region(target, width=fov*u.arcsec, catalog="I/350/gaiaedr3", column_filters={'Gmag': '<%.f' % MAGLIM})
     return result[0][("RA_ICRS", "DE_ICRS", "Gmag")]
 
 def do_2mass(target, fov):
 
-    result = Vizier.query_region(target, fov=fov*u.arcsec, catalog="II/246")
+    result = Vizier.query_region(target, width=fov*u.arcsec, catalog="II/246")
     f = open("%s_2MASS.reg" % SAVE, "w")
     f.write("# Region file format: DS9 version 4.1\n" \
             "global color=magenta dashlist=8 3 fov=1 font=\"helvetica 10 normal roman\" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1\n" \
