@@ -48,7 +48,7 @@ def do_2mass(target, fov):
     result = Vizier.query_region(target, width=fov*u.arcsec, catalog="II/246")
     f = open("%s_2MASS.reg" % SAVE, "w")
     f.write("# Region file format: DS9 version 4.1\n" \
-            "global color=magenta dashlist=8 3 fov=1 font=\"helvetica 10 normal roman\" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1\n" \
+            "global color=magenta dashlist=8 3 width=1 font=\"helvetica 10 normal roman\" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1\n" \
             "icrs\n")
     for target in result[0]:
         f.write("circle(%.7f,%.7f,0.6\")\n" % (target["RAJ2000"], target["DEJ2000"]))
@@ -71,7 +71,7 @@ def do_image(target, fov, pxscl, fwhm, zeromag):
     
     f = open("%s_GAIA.reg" % SAVE, "w")
     f.write("""# Region file format: DS9 version 4.1
-global color=green dashlist=8 3 fov=1 font="helvetica 10 normal roman" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1
+global color=green dashlist=8 3 width=1 font="helvetica 10 normal roman" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1
 icrs
 """)
 
